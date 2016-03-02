@@ -68,17 +68,16 @@ public class SicknessCaseOperation {
 	 
 	 private static String ROSTER_BAME = "POCv6";
 	 private static String solutionPrefix = "POC6_";
-	 private static String identifyPrefix = "Array-";
 	 
-	private static final String PROPERTY_NAME_NAME = solutionPrefix + identifyPrefix + "EmployeeName";
-	private static final String PROPERTY_NAME_EMPLOYEENUMBER = solutionPrefix + identifyPrefix + "EmployeeNumber";
-	private static final String PROPERTY_NAME_SS = solutionPrefix + identifyPrefix + "SocialSecurityNumber";
-	private static final String PROPERTY_NAME_WORKLOCATIONCODE = solutionPrefix + identifyPrefix + "WorkLocationCode";
-	private static final String PROPERTY_NAME_WORKLOCATIONNAME = solutionPrefix + identifyPrefix + "WorkLocationName";
-	private static final String PROPERTY_NAME_SICKNESSTYPEFROMTRACKER = solutionPrefix + identifyPrefix + "SicknessTypeFromTracker";
-	private static final String PROPERTY_NAME_FIRSTYEAREMPLOYEE = solutionPrefix + identifyPrefix + "FirstYearEmployee";
-	private static final String PROPERTY_NAME_LASTWORKDAYTHISSICKNESS = solutionPrefix + identifyPrefix + "LastWorkDayThisSickness";
-	private static final String PROPERTY_NAME_FIRSTSICKDAYTHISMONTHFROMTRACKER = solutionPrefix + identifyPrefix + "FirstSickDayThisMonthFromTracker";
+	private static final String PROPERTY_NAME_NAME = solutionPrefix + "EmployeeName";
+	private static final String PROPERTY_NAME_EMPLOYEENUMBER = solutionPrefix + "EmployeeNumber";
+	private static final String PROPERTY_NAME_SS = solutionPrefix + "SocialSecurityNumber";
+	private static final String PROPERTY_NAME_WORKLOCATIONCODE = solutionPrefix + "WorkLocationCode";
+	private static final String PROPERTY_NAME_WORKLOCATIONNAME = solutionPrefix + "WorkLocationName";
+	private static final String PROPERTY_NAME_SICKNESSTYPEFROMTRACKER = solutionPrefix + "SicknessTypeFromTracker";
+	private static final String PROPERTY_NAME_FIRSTYEAREMPLOYEE = solutionPrefix + "FirstYearEmployee";
+	private static final String PROPERTY_NAME_LASTWORKDAYTHISSICKNESS = solutionPrefix + "LastWorkDayThisSickness";
+	private static final String PROPERTY_NAME_FIRSTSICKDAYTHISMONTHFROMTRACKER = solutionPrefix + "FirstSickDayThisMonthFromTracker";
 
 	private static final String PROPERTY_NAME_LIST_SICKCASEID = solutionPrefix + "List_SickCaseId";
 	private static final String PROPERTY_NAME_LIST_EMPLOYEENUMBER = solutionPrefix + "List_EmployeeNumber";
@@ -181,7 +180,7 @@ public class SicknessCaseOperation {
 
 		CaseMgmtProperties propertiesBatch = pendingCaseBatch.getProperties();
 
-		propertiesBatch.putObjectValue(solutionPrefix + "List_SickCaseId", caseIdList.toArray());
+		propertiesBatch.putObjectValue(solutionPrefix + "Array-SickCaseId", caseIdList.toArray());
 
 		PropertyFilter propFilt = getBatchPropertyFilter();
 		
