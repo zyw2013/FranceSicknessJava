@@ -66,13 +66,13 @@ public class SicknessCaseOperation {
 	// private static String ROSTER_BAME = "POCv4";
     // private static String solutionPrefix = "POC4_";
 	 
-	 private static String ROSTER_BAME = "POCv7";
-	 private static String solutionPrefix = "POC7_";
+	 private static String ROSTER_BAME = "POCv6";
+	 private static String solutionPrefix = "POC6_";
 	 private static String identifyPrefix = "Array-";
 	 
-	private static final String PROPERTY_NAME_NAME = solutionPrefix + identifyPrefix + "Name";
+	private static final String PROPERTY_NAME_NAME = solutionPrefix + identifyPrefix + "EmployeeName";
 	private static final String PROPERTY_NAME_EMPLOYEENUMBER = solutionPrefix + identifyPrefix + "EmployeeNumber";
-	private static final String PROPERTY_NAME_SS = solutionPrefix + identifyPrefix + "SS";
+	private static final String PROPERTY_NAME_SS = solutionPrefix + identifyPrefix + "SocialSecurityNumber";
 	private static final String PROPERTY_NAME_WORKLOCATIONCODE = solutionPrefix + identifyPrefix + "WorkLocationCode";
 	private static final String PROPERTY_NAME_WORKLOCATIONNAME = solutionPrefix + identifyPrefix + "WorkLocationName";
 	private static final String PROPERTY_NAME_SICKNESSTYPEFROMTRACKER = solutionPrefix + identifyPrefix + "SicknessTypeFromTracker";
@@ -87,13 +87,11 @@ public class SicknessCaseOperation {
 	private static final String PROPERTY_NAME_LIST_NUMOFSICKDAYS_IBM = solutionPrefix + "List_NumOfSickDays_IBM";
 	private static final String PROPERTY_NAME_LIST_AMOUNTPAID_IBMCALC = solutionPrefix + "List_AmountPaid_IBMCalc";
 
-	private static String caseTypeNameBatch = solutionPrefix + "DailyCPAMBatch";
-	private static String caseTypeNameSickOccur = solutionPrefix + "SickEmployeeOccurrence";
+	private static String caseTypeNameBatch = solutionPrefix + "OneSicknessofEmployee";
 	private static String targetObjectStoreName = "TARGET";
 	private ObjectStore objStoreTarget;
 	private ObjectStoreReference objStoreRefTarget;
 
-	private CaseType caseTypeSickOccur;
 	private CaseType caseTypeBatch;
 
 	public SicknessCaseOperation() {
@@ -111,7 +109,6 @@ public class SicknessCaseOperation {
 
 		objStoreRefTarget = new ObjectStoreReference(objStoreTarget);
 
-		caseTypeSickOccur = CaseType.fetchInstance(objStoreRefTarget, caseTypeNameSickOccur);
 		caseTypeBatch = CaseType.fetchInstance(objStoreRefTarget, caseTypeNameBatch);
 
 	}
@@ -123,7 +120,7 @@ public class SicknessCaseOperation {
 //		operation.deleteWorkflows();
 		
 		try {
-			operation.createPocCase("C:\\spy\\ops\\dataR - Z sickness tracker - Katinka.xlsx");
+			operation.createPocCase("C:\\spy\\ops\\data\\R - Z sickness tracker - Katinka.xlsx");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -200,7 +197,7 @@ public class SicknessCaseOperation {
 		
 		printRecordLog("Start create SicknessOccurence Case instance..");
 
-		Case pendingCaseSickOccur = Case.createPendingInstanceFetchDefaults(caseTypeSickOccur);
+		Case pendingCaseSickOccur = Case.createPendingInstanceFetchDefaults(caseTypeBatch);
 
 		CaseMgmtProperties propertiesSickOccur = pendingCaseSickOccur.getProperties();
 
@@ -229,9 +226,9 @@ public class SicknessCaseOperation {
 	}
 	
 	public Case createSickOccurrenceCase(SicknessDetail sicknessDetail) {
-		printRecordLog("Start create SicknessOccurence Case instance..");
+		printRecordLog("Start create OneSicknessofEmployee Case instance..");
 
-		Case pendingCaseSickOccur = Case.createPendingInstanceFetchDefaults(caseTypeSickOccur);
+		Case pendingCaseSickOccur = Case.createPendingInstanceFetchDefaults(caseTypeBatch);
 
 		CaseMgmtProperties propertiesSickOccur = pendingCaseSickOccur.getProperties();
 
